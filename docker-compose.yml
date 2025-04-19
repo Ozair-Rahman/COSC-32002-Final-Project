@@ -1,0 +1,18 @@
+services:
+  fastapi:
+    build:
+      context: ./fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+
+  streamlit:
+    build:
+      context: ./streamlit
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+          - fastapi 
